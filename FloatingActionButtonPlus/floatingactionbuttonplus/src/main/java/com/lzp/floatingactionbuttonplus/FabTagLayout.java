@@ -3,12 +3,10 @@ package com.lzp.floatingactionbuttonplus;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
-import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 /**
  * Created by liuzipeng on 15/11/23.
@@ -76,7 +74,7 @@ public class FabTagLayout extends ViewGroup {
     /**
      * 改变标标签的显示位置
      * 通过 TO_RIGHT or TO_LEFT来判断
-     * @param orientation
+     * @param orientation FloatingActionButton所处的方向
      */
     public void setOrientation(int orientation) {
         mOrientation = orientation;
@@ -85,7 +83,7 @@ public class FabTagLayout extends ViewGroup {
 
     /**
      * 设置使用场景，以通过不同方式获取LayoutParams
-     * @param scene
+     * @param scene 表示是在FloatingActionButton中被使用还是单独被使用
      */
     public void setScene(boolean scene) {
         mScene = scene;
@@ -120,7 +118,7 @@ public class FabTagLayout extends ViewGroup {
         setLayoutParams(params);
 
         View tagView = getChildAt(0);
-        FloatingActionButton FabView = (FloatingActionButton) getChildAt(1);
+        View FabView = (View) getChildAt(1);
 
         int fabWidth = FabView.getMeasuredWidth();
         int fabHeight = FabView.getMeasuredHeight();
@@ -169,7 +167,7 @@ public class FabTagLayout extends ViewGroup {
      * @param tagView
      * @param fabView
      */
-    private void bindEvents(View tagView, FloatingActionButton fabView) {
+    private void bindEvents(View tagView, View fabView) {
         tagView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

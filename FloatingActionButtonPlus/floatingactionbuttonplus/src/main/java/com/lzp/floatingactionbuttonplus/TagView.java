@@ -33,7 +33,7 @@ public class TagView extends CardView {
 
     /**
      * 设置字体尺寸
-     * @param size
+     * @param size  字体尺寸
      */
     protected void setTextSize(float size) {
         mTextView.setTextSize(size);
@@ -41,15 +41,15 @@ public class TagView extends CardView {
 
     /**
      * 设置字体颜色
-     * @param color
+     * @param color 字体颜色
      */
     protected void setTextColor(int color) {
         mTextView.setTextColor(color);
     }
 
     /**
-     * 设置字体
-     * @param text
+     * 设置显示的文字
+     * @param text  显示的文字
      */
     protected void setTagText(String text) {
         mTextView.setText(text);

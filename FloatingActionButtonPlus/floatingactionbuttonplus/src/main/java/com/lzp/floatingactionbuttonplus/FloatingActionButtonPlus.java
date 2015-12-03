@@ -25,6 +25,7 @@ import android.view.animation.OvershootInterpolator;
  * FloatingActionButtonPlus是一个基于Google官方support library中的FloatingActionButton与CardView的一个
  * 二次封装，目的为实现类似Google Inbox中带有多个子Fab的效果。由于是使用了官方的FloatingActionButton，因为阴影绘制
  * 方式的不同，在5.0一下系统和5.0以上系统的显示效果有一定差别。后续会做改进。
+ * Api版本最低兼容到Api14（minSdkVersion 14）
  * <p>
  * 提供了四个position，分别为POS_LEFT_TOP，POS_LEFT_BOTTOM，POS_RIGHT_TOP，POS_RIGHT_BOTTOM。可在xml中使用
  * {@code position}去设置。也可在java代码中通过setPosition方法去设置{@link #setPosition(int)}
@@ -75,7 +76,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
     /**
      * 设置主Fab的点击时间，该点击事件只在展开前会响应
      *
-     * @param onSwitchFabClickListener
+     * @param onSwitchFabClickListener 主Fab的点击事件接口
      */
     public void setOnSwitchFabClickListener(OnSwitchFabClickListener onSwitchFabClickListener) {
         mOnSwitchFabClickListener = onSwitchFabClickListener;
@@ -88,7 +89,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
     /**
      * 设置每一item的点击事件，每一个item中的Fab的Tag均会会响应这同一个事件
      *
-     * @param itemClickListener
+     * @param itemClickListener 每一个item的点击事件接口
      */
     public void setOnItemClickListener(OnItemClickListener itemClickListener) {
         mOnItemClickListener = itemClickListener;
@@ -412,7 +413,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
     /**
      * 设置动画持续时间
      *
-     * @param duration
+     * @param duration  动画持续时间，毫秒值
      */
     public void setAnimationDuration(int duration) {
         mAnimationDuration = duration;
@@ -421,7 +422,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
     /**
      * 设置主Fab在被点击的时候旋转的角度
      *
-     * @param val
+     * @param val 主Fab旋转时的度数
      */
     public void setRotateValues(float val) {
         mSwitchFabRotateVal = val;
@@ -430,7 +431,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
     /**
      * 设置主Fab的背景颜色
      *
-     * @param color
+     * @param color  颜色 是一个ColorStateList对象
      */
     public void setSwitchFabColor(ColorStateList color) {
         mSwitchFab.setBackgroundTintList(color);
@@ -439,7 +440,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
     /**
      * 设置主Fab的Icon图片
      *
-     * @param icon
+     * @param icon 主Fab的Icon图片，Drawable对象
      */
     public void setContentIcon(Drawable icon) {
         mSwitchFab.setImageDrawable(icon);
@@ -451,7 +452,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
      * FloatingActionButtonPlus.ANIM_FADE
      * FloatingActionButtonPlus.ANIM_SCALE
      *
-     * @param animationMode
+     * @param animationMode  动画模式
      */
     public void setAnimation(int animationMode) {
         mAnimation = animationMode;
@@ -464,7 +465,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
      * FloatingActionButtonPlus.POS_RIGHT_BOTTOM
      * FloatingActionButtonPlus.POS_RIGHT_TOP
      *
-     * @param position
+     * @param position  Fab所处的位置
      */
     public void setPosition(int position) {
         mPosition = position;
