@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FabTagLayout">
+        <attr name="tagText" format="string" />
+        <!--<attr name="tagTextSize" format="dimension" />-->
+        <!--<attr name="tagTextColor" format="color" />-->
+    </declare-styleable>
+
+    <attr name="animationMode">
+        <enum name="fade" value="0"></enum>
+        <enum name="Scale" value="1"></enum>
+        <enum name="bounce" value="2"></enum>
+    </attr>
+    <attr name="position">
+        <enum name="left_top" value="0"></enum>
+        <enum name="left_bottom" value="1"></enum>
+        <enum name="right_top" value="2"></enum>
+        <enum name="right_bottom" value="3"></enum>
+    </attr>
+
+    <declare-styleable name="FloatingActionButtonPlus">
+        <attr name="animationMode"></attr>
+        <attr name="position"></attr>
+        <attr name="mBackgroundColor" format="color"></attr>
+        <attr name="switchFabIcon" format="reference"></attr>
+        <attr name="switchFabColor" format="color"></attr>
+        <attr name="animationDuration" format="integer"></attr>
+    </declare-styleable>
+
+</resources>
