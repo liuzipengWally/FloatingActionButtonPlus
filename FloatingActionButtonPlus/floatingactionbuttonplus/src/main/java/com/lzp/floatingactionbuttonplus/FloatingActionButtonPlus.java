@@ -43,14 +43,14 @@ import android.view.animation.OvershootInterpolator;
  * 住Fab的颜色可在XML中通过{@code switchFabColor}来设置，java代码中通过{@link #setSwitchFabColor(ColorStateList)}设置
  */
 public class FloatingActionButtonPlus extends ViewGroup {
-    private static final int POS_LEFT_TOP = 0;
-    private static final int POS_LEFT_BOTTOM = 1;
-    private static final int POS_RIGHT_TOP = 2;
-    private static final int POS_RIGHT_BOTTOM = 3;
+    public static final int POS_LEFT_TOP = 0;
+    public static final int POS_LEFT_BOTTOM = 1;
+    public static final int POS_RIGHT_TOP = 2;
+    public static final int POS_RIGHT_BOTTOM = 3;
 
-    private static final int ANIM_FADE = 0;
-    private static final int ANIM_SCALE = 1;
-    private static final int ANIM_BOUNCE = 2;
+    public static final int ANIM_FADE = 0;
+    public static final int ANIM_SCALE = 1;
+    public static final int ANIM_BOUNCE = 2;
 
     private float mSwitchFabRotateVal = -405F;
     private int mAnimationDuration;
@@ -65,6 +65,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
     private View mBackView;
 
     private boolean mStatus;
+    private boolean mSwitchFabStatus = true;
 
     private OnItemClickListener mOnItemClickListener;
     private OnSwitchFabClickListener mOnSwitchFabClickListener;
@@ -413,7 +414,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
     /**
      * 设置动画持续时间
      *
-     * @param duration  动画持续时间，毫秒值
+     * @param duration 动画持续时间，毫秒值
      */
     public void setAnimationDuration(int duration) {
         mAnimationDuration = duration;
@@ -431,7 +432,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
     /**
      * 设置主Fab的背景颜色
      *
-     * @param color  颜色 是一个ColorStateList对象
+     * @param color 颜色 是一个ColorStateList对象
      */
     public void setSwitchFabColor(ColorStateList color) {
         mSwitchFab.setBackgroundTintList(color);
@@ -452,7 +453,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
      * FloatingActionButtonPlus.ANIM_FADE
      * FloatingActionButtonPlus.ANIM_SCALE
      *
-     * @param animationMode  动画模式
+     * @param animationMode 动画模式
      */
     public void setAnimation(int animationMode) {
         mAnimation = animationMode;
@@ -465,7 +466,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
      * FloatingActionButtonPlus.POS_RIGHT_BOTTOM
      * FloatingActionButtonPlus.POS_RIGHT_TOP
      *
-     * @param position  Fab所处的位置
+     * @param position Fab所处的位置
      */
     public void setPosition(int position) {
         mPosition = position;
@@ -475,32 +476,47 @@ public class FloatingActionButtonPlus extends ViewGroup {
      * 隐藏FloatingActionButtonPlus
      */
     public void hideFab() {
-        ObjectAnimator scaleX = ObjectAnimator.ofFloat(mSwitchFab, "scaleX", 1F, 0F);
-        ObjectAnimator scaleY = ObjectAnimator.ofFloat(mSwitchFab, "scaleY", 1F, 0F);
-        ObjectAnimator alpha = ObjectAnimator.ofFloat(mSwitchFab, "alpha", 1F, 0F);
-        AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playTogether(scaleX, scaleY, alpha);
-        animatorSet.setDuration(mAnimationDuration);
-        animatorSet.setInterpolator(new OvershootInterpolator());
-        animatorSet.start();
+        if (mSwitchFabStatus) {
+            ObjectAnimator scaleX = ObjectAnimator.ofFloat(mSwitchFab, "scaleX", 1F, 0F);
+            ObjectAnimator scaleY = ObjectAnimator.ofFloat(mSwitchFab, "scaleY", 1F, 0F);
+            ObjectAnimator alpha = ObjectAnimator.ofFloat(mSwitchFab, "alpha", 1F, 0F);
+            AnimatorSet animatorSet = new AnimatorSet();
+            animatorSet.playTogether(scaleX, scaleY, alpha);
+            animatorSet.setDuration(mAnimationDuration);
+            animatorSet.setInterpolator(new OvershootInterpolator());
+            animatorSet.start();
 
-        hideChild(animatorSet, mSwitchFab);
+            hideChild(animatorSet, mSwitchFab);
+            mSwitchFabStatus = false;
+        }
     }
 
     /**
      * 显示FloatingActionButtonPlus
      */
     public void showFab() {
-        ObjectAnimator scaleX = ObjectAnimator.ofFloat(mSwitchFab, "scaleX", 0F, 1F);
-        ObjectAnimator scaleY = ObjectAnimator.ofFloat(mSwitchFab, "scaleY", 0F, 1F);
-        ObjectAnimator alpha = ObjectAnimator.ofFloat(mSwitchFab, "alpha", 0F, 1F);
-        AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playTogether(scaleX, scaleY, alpha);
-        animatorSet.setDuration(mAnimationDuration);
-        animatorSet.setInterpolator(new OvershootInterpolator());
-        animatorSet.start();
+        if (!mSwitchFabStatus) {
+            mSwitchFab.setVisibility(VISIBLE);
 
-        mSwitchFab.setVisibility(VISIBLE);
+            ObjectAnimator scaleX = ObjectAnimator.ofFloat(mSwitchFab, "scaleX", 0F, 1F);
+            ObjectAnimator scaleY = ObjectAnimator.ofFloat(mSwitchFab, "scaleY", 0F, 1F);
+            ObjectAnimator alpha = ObjectAnimator.ofFloat(mSwitchFab, "alpha", 0F, 1F);
+            AnimatorSet animatorSet = new AnimatorSet();
+            animatorSet.playTogether(scaleX, scaleY, alpha);
+            animatorSet.setDuration(mAnimationDuration);
+            animatorSet.setInterpolator(new OvershootInterpolator());
+            animatorSet.start();
+            mSwitchFabStatus = true;
+        }
+    }
+
+    /**
+     * 返回当前主Fab的显示状态
+     *
+     * @return 显示的时候返回true，隐藏的时候返回false
+     */
+    public boolean getSwitchFabDisplayState() {
+        return mSwitchFabStatus;
     }
 
     /**

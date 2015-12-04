@@ -26,5 +26,4 @@
         <attr name="switchFabColor" format="color"></attr>
         <attr name="animationDuration" format="integer"></attr>
     </declare-styleable>
-
 </resources>
