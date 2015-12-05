@@ -1,7 +1,7 @@
 #FloatingActionButtonPlus
 ***
 this is a Google Inbox style FloatingActionButton and **my english is poor**。这是一个Google inbox风格的FloatingActionButton控件。   
-![fabs](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/images/fabs.gif)
+![fabs](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/screenshots/fabs.gif)
 ##matters needing attention
 
 该控件理论上最低支持到API版本14也就是Android4.0**（minSdkVersion 14）**，并且由于是官方Support Library中FloatingActionButton的二次封装，showdown的生成在API21以上和21一下并不太一样，所以在不同版本的系统中的效果会存在一定的差异。
@@ -143,11 +143,11 @@ this is a Google Inbox style FloatingActionButton and **my english is poor**。�
    ***
 
 ###position
-![right_bottom](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/images/right_bottom.gif)
-![right_top](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/images/Right_top.gif)
+![right_bottom](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/screenshots/right_bottom.gif)
+![right_top](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/screenshots/Right_top.gif)
 GIF会掉帧，实际效果很流畅
-![left_bottom](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/images/left_bottom.gif)
-![left_top](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/images/left_top.gif)  
+![left_bottom](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/screenshots/left_bottom.gif)
+![left_top](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/screenshots/left_top.gif)  
 如图提供了四种position方式，默认为**right_bottom**。其他为**right_top**、**left_bottom**、**left_top**。在CoordinatorLayout中建议不要定位到top，会被toolbar挡住。  
 **position**可在XML布局中设置，也可在JAVA代码中设置。
 ####XML
