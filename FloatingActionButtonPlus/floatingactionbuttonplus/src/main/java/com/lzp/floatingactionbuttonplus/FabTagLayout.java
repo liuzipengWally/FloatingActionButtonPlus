@@ -7,15 +7,17 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * Created by liuzipeng on 15/11/23.
- *
+ * <p>
  * 这个ViewGroup的作用是为了包裹FloatingActionButton为其提供一个label标签，
  * 该label标签是support库中的CardView。
  */
 public class FabTagLayout extends ViewGroup {
     private String mTagText;
+    private TagView mTagView;
 
     /*这两个常量表示了当前Fab在屏幕中的位置，用来决定标签应该在左还是右，
     TO_RIGHT应该在左,TO_LEFT应该在右，默认为TO_RIGHT*/
@@ -66,14 +68,23 @@ public class FabTagLayout extends ViewGroup {
     }
 
     private void settingsView(Context context) {
-        TagView tagView = new TagView(context);
-        tagView.setTagText(mTagText);
-        addView(tagView);
+        mTagView = new TagView(context);
+        mTagView.setTagText(mTagText);
+        addView(mTagView);
+    }
+
+    /**
+     * 设置tag显示的文字
+     * @param text  显示的文字
+     */
+    public void setTagText(String text) {
+        mTagView.setTagText(text);
     }
 
     /**
      * 改变标标签的显示位置
      * 通过 TO_RIGHT or TO_LEFT来判断
+     *
      * @param orientation FloatingActionButton所处的方向
      */
     public void setOrientation(int orientation) {
@@ -83,6 +94,7 @@ public class FabTagLayout extends ViewGroup {
 
     /**
      * 设置使用场景，以通过不同方式获取LayoutParams
+     *
      * @param scene 表示是在FloatingActionButton中被使用还是单独被使用
      */
     public void setScene(boolean scene) {
@@ -164,6 +176,7 @@ public class FabTagLayout extends ViewGroup {
 
     /**
      * 为fab和tag添加点击事件监听
+     *
      * @param tagView
      * @param fabView
      */
@@ -190,13 +203,14 @@ public class FabTagLayout extends ViewGroup {
     /**
      * 将数值转换为DP
      * api<21则返回0
+     *
      * @param value
      * @return
      */
     private int convertDp(int value) {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
             return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value, getResources().getDisplayMetrics());
-        }else {
+        } else {
             return 0;
         }
     }

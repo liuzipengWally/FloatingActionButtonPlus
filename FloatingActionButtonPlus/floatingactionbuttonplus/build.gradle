@@ -10,7 +10,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
-        versionName "0.2.2"
+        versionName "0.2.3"
     }
     buildTypes {
         release {
@@ -22,12 +22,11 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
     compile 'com.android.support:cardview-v7:23.1.0'
 }
 
-version = "0.2.2"
+version = "0.2.3"
 def siteUrl = 'https://github.com/550609334/FloatingActionButtonPlus'    // project homepage
 def gitUrl = 'https://github.com/550609334/FloatingActionButtonPlus.git' // project git
 group = "com.lzp.floatingactionbutton"
