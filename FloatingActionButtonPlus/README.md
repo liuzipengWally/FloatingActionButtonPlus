@@ -14,7 +14,7 @@ this is a Google Inbox style FloatingActionButton and **my english is poor**ã€‚è
 ##How to use
 ***
 ###Gradle
-    compile 'com.lzp.floatingactionbutton:floatingactionbuttonplus:0.2.2'
+    compile 'com.lzp.floatingactionbutton:floatingactionbuttonplus:0.2.3'
     
 ###Maven
 
