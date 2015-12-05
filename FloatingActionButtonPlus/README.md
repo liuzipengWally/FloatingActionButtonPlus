@@ -145,9 +145,9 @@ this is a Google Inbox style FloatingActionButton and **my english is poor**。�
 ###position
 ![right_bottom](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/screenshots/right_bottom.gif)
 ![right_top](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/screenshots/Right_top.gif)
-GIF会掉帧，实际效果很流畅
-![left_bottom](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/screenshots/left_bottom.gif)
-![left_top](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/screenshots/left_top.gif)  
+![left_bottom](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/screenshots/left_bottom.gif)![left_top](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/screenshots/left_top.gif)    
+GIF会掉帧，实际效果很流畅  
+
 如图提供了四种position方式，默认为**right_bottom**。其他为**right_top**、**left_bottom**、**left_top**。在CoordinatorLayout中建议不要定位到top，会被toolbar挡住。  
 **position**可在XML布局中设置，也可在JAVA代码中设置。
 ####XML
@@ -200,10 +200,10 @@ Animation暂时给了三种，分别为**fade、scale、bounce**，默认为scal
 ###Events
 暂时只给出了item的点击事件，如果有更多类型事件的需求，欢迎Email联系我。
         
-    mActionButtonPlus.setOnItemClickListener(new	        FloatingActionButtonPlus.OnItemClickListener() {
+    mActionButtonPlus.setOnItemClickListener(new FloatingActionButtonPlus.OnItemClickListener() {
             @Override
             public void onItemClick(FabTagLayout tagView, int position) {
-                Toast.makeText(MainActivity.this, "Click btn" + position, 			Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Click btn" + position, Toast.LENGTH_SHORT).show();
             }
         });
   
