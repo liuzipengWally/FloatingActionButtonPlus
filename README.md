@@ -1,6 +1,6 @@
 #FloatingActionButtonPlus
 ***
-this is a Google Inbox style FloatingActionButton and **my english is poor**。这是一个Google inbox风格的FloatingActionButton控件。   
+this is a Google Inbox style FloatingActionButton and **My English is poor**。这是一个Google inbox风格的FloatingActionButton控件。   
 ![fabs](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/screenshots/fabs.gif)
 ##matters needing attention
 
@@ -251,7 +251,7 @@ Animation暂时给了三种，分别为**fade、scale、bounce**，默认为scal
 
 ##Other
 #####关于为什么不直接在FabTagLayout里集成FloatingActionButton
-主要是因为Google并没有给出用java代码设置FloatingActionButton的size的方法，所以没办法设置成mini型。我试过用放射去更改FloatingActionButton中的mSize这个private变量，在api21之后，可行，但21以下就会出现很多问题，例如icon不会跟着变小，阴影会变成矩形。这是因为在FloatingActionButton中是根据mSize的值去绘制阴影和决定icon大小的。而这一切操作都是在它的constructor中完成，所以我选择了让使用者来指定每一个FloatingActionButton。  当然日后也许我会试着制作一个独立的FloatingActionButton来解决这个问题。
+主要是因为Google并没有给出用java代码设置FloatingActionButton的size的方法，所以没办法设置成mini型。我试过用反射去更改FloatingActionButton中的mSize这个private变量，在api21之后，可行，但21以下就会出现很多问题，例如icon不会跟着变小，阴影会变成矩形。这是因为在FloatingActionButton中是根据mSize的值去绘制阴影和决定icon大小的。而这一切操作都是在它的constructor中完成，所以我选择了让使用者来指定每一个FloatingActionButton。  当然日后也许我会试着制作一个独立的FloatingActionButton来解决这个问题。
 
 #####About bugs
 如果出现Bug，或者你有什么建议或需求，可以Email连系我。
