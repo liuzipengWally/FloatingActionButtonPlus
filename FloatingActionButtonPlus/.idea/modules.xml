@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FloatingActionButtonPlus.iml" filepath="$PROJECT_DIR$/FloatingActionButtonPlus.iml" />
       <module fileurl="file://$PROJECT_DIR$/floatingactionbuttonplus/floatingactionbuttonplus.iml" filepath="$PROJECT_DIR$/floatingactionbuttonplus/floatingactionbuttonplus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testfab/testfab.iml" filepath="$PROJECT_DIR$/testfab/testfab.iml" />
     </modules>
   </component>
 </project>

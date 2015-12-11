@@ -14,14 +14,14 @@ this is a Google Inbox style FloatingActionButton and **My English is poor**。�
 ##How to use
 ***
 ###Gradle
-    compile 'com.lzp.floatingactionbutton:floatingactionbuttonplus:0.2.3'
+    compile 'com.lzp.floatingactionbutton:floatingactionbuttonplus:0.3.0'
     
 ###Maven
 
     <dependency>
     <groupId>com.lzp.floatingactionbutton</groupId>
     <artifactId>floatingactionbuttonplus</artifactId>
-    <version>0.2.3</version>
+    <version>0.3.0</version>
     </dependency>
     
 ###The effect of the above（如上图的效果）
@@ -32,6 +32,7 @@ this is a Google Inbox style FloatingActionButton and **My English is poor**。�
     android:layout_height="wrap_content"
     app:switchFabColor="#DB4537"
     app:switchFabIcon="@mipmap/ic_add_white_48dp"
+    app:layout_behavior="com.lzp.floatingactionbuttonplus.FabBehavior"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -208,7 +209,26 @@ Animation暂时给了三种，分别为**fade、scale、bounce**，默认为scal
         });
   
 ###Scroll show or hide  
-关于滑动显示隐藏，由于我还没有弄明白CoordinatorLayout的扩展该怎么做，所以我没有能集成在这之中。但是我给出了两个public method。 分别为showFab() 和  hideFab()。通过FloatingActionButtonPlus对象去调用。所以你如果想要实现通过这个效果，需要你去获取当前Scroll的距离。例如在RecyclerView中你可以这么写：
+关于滑动显示隐藏，这里有两种方法，
+#####1、使用CoordinatorLayout
+
+使用CoordinatorLayout的话，首先要确保你的外层layout是`android.support.design.widget.CoordinatorLayout`，如我上面activity_main.xml中的实例代码。之后你需要在`com.lzp.floatingactionbuttonplus.FloatingActionButtonPlus`中添加上`app:layout_behavior="com.lzp.floatingactionbuttonplus.FabBehavior"`，如下
+
+    <com.lzp.floatingactionbuttonplus.FloatingActionButtonPlus
+    android:id="@+id/FabPlus"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:switchFabColor="#DB4537"
+    app:switchFabIcon="@mipmap/ic_add_white_48dp"
+    app:layout_behavior="com.lzp.floatingactionbuttonplus.FabBehavior"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    </com.lzp.floatingactionbuttonplus.FloatingActionButtonPlus>
+
+
+#####2、监听滑动距离（judge scorll distance）
+在没有使用CoordinatorLayout的情况下，我给出了两个public method。 分别为showFab() 和  hideFab()。通过FloatingActionButtonPlus对象去调用。所以你如果想要实现通过这个效果，需要你去获取当前Scroll的距离。例如在RecyclerView中你可以这么写：
 
      mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -242,7 +262,7 @@ Animation暂时给了三种，分别为**fade、scale、bounce**，默认为scal
 ####Java Code
 ######com.lzp.floatingactionbuttonplus.FloatingActionButtonPlus
 	mActionButtonPlus.setContentIcon(getResources().getDrawable(R.mipmap.ic_add_white_48dp)); //设置主Fab的icon图标
-    mActionButtonPlus.setRotateValues(405); //设置主Fab被点击时旋转的度数，默认为405度
+    mActionButtonPlus.setRotateValues(45); //设置主Fab被点击时旋转的度数，默认为45度
     boolean state = mActionButtonPlus.getSwitchFabDisplayState();  //获取当前Fab的显示状态，显示时返回true，隐藏返回false
     
 #####com.lzp.floatingactionbuttonplus.FabTagLayout

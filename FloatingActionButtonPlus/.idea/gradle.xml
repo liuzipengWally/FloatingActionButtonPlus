@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/floatingactionbuttonplus" />
+            <option value="$PROJECT_DIR$/testfab" />
           </set>
         </option>
       </GradleProjectSettings>

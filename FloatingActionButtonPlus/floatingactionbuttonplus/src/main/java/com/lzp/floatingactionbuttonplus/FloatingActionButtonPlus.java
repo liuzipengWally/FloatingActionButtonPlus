@@ -11,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -52,7 +53,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
     public static final int ANIM_SCALE = 1;
     public static final int ANIM_BOUNCE = 2;
 
-    private float mSwitchFabRotateVal = -405F;
+    private float mSwitchFabRotateVal = 45F;
     private int mAnimationDuration;
 
     private int mPosition;
@@ -128,10 +129,10 @@ public class FloatingActionButtonPlus extends ViewGroup {
         backView.setAlpha(0);
         addView(backView);
 
-        FloatingActionButton fab = new FloatingActionButton(context);
-        fab.setBackgroundTintList(mFabColor);
-        fab.setImageDrawable(mIcon);
-        addView(fab);
+        mSwitchFab= new FloatingActionButton(context);
+        mSwitchFab.setBackgroundTintList(mFabColor);
+        mSwitchFab.setImageDrawable(mIcon);
+        addView(mSwitchFab);
     }
 
     @Override
@@ -257,7 +258,6 @@ public class FloatingActionButtonPlus extends ViewGroup {
     }
 
     private void layoutSwitchFab() {
-        mSwitchFab = (FloatingActionButton) getChildAt(1);
         int l;
         int t;
 
@@ -397,7 +397,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
     private void rotateSwitchFab() {
         ObjectAnimator animator = mStatus ? ObjectAnimator.ofFloat(mSwitchFab, "rotation", mSwitchFabRotateVal, 0F) :
                 ObjectAnimator.ofFloat(mSwitchFab, "rotation", 0F, mSwitchFabRotateVal);
-        animator.setDuration(100);
+        animator.setDuration(150);
         animator.setInterpolator(new LinearInterpolator());
         animator.start();
     }
@@ -482,7 +482,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
             ObjectAnimator alpha = ObjectAnimator.ofFloat(mSwitchFab, "alpha", 1F, 0F);
             AnimatorSet animatorSet = new AnimatorSet();
             animatorSet.playTogether(scaleX, scaleY, alpha);
-            animatorSet.setDuration(mAnimationDuration);
+            animatorSet.setDuration(300);
             animatorSet.setInterpolator(new OvershootInterpolator());
             animatorSet.start();
 
@@ -503,7 +503,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
             ObjectAnimator alpha = ObjectAnimator.ofFloat(mSwitchFab, "alpha", 0F, 1F);
             AnimatorSet animatorSet = new AnimatorSet();
             animatorSet.playTogether(scaleX, scaleY, alpha);
-            animatorSet.setDuration(mAnimationDuration);
+            animatorSet.setDuration(300);
             animatorSet.setInterpolator(new OvershootInterpolator());
             animatorSet.start();
             mSwitchFabStatus = true;
