@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ff9800</color>
+    <color name="colorPrimaryDark">#f57c00</color>
+    <color name="colorAccent">#ff9800</color>
+    <color name="primary_text_material_light">#87000000</color>
+    <color name="foreground_material_light">#ffffff</color>
+    <color name="black">#ffffff</color>
+    <color name="primary_text_default_material_light">#87000000</color>
+    <color name="hint">#26000000</color>
+    <color name="body">#87000000</color>
+    <color name="ripple_gray">#26000000</color>
+    <color name="transparent">#00000000</color>
+</resources>
