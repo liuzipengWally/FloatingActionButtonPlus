@@ -115,7 +115,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.FloatingActionButtonPlus);
         mPosition = typedArray.getInt(R.styleable.FloatingActionButtonPlus_position, POS_RIGHT_BOTTOM);
         mAnimation = typedArray.getInt(R.styleable.FloatingActionButtonPlus_animationMode, ANIM_SCALE);
-        mBackgroundColor = typedArray.getColor(R.styleable.FloatingActionButtonPlus_mBackgroundColor, 0x99ffffff);
+        mBackgroundColor = typedArray.getColor(R.styleable.FloatingActionButtonPlus_mBackgroundColor, 0xf2ffffff);
         mFabColor = typedArray.getColorStateList(R.styleable.FloatingActionButtonPlus_switchFabColor);
         mIcon = typedArray.getDrawable(R.styleable.FloatingActionButtonPlus_switchFabIcon);
         mAnimationDuration = typedArray.getInt(R.styleable.FloatingActionButtonPlus_animationDuration, 150);

@@ -8,20 +8,20 @@ this is a Google Inbox style FloatingActionButton and **My English is poor**。�
 
 ######该控件依赖了以下两个support library，使用者无需在项目里再次添加 （Don't need to add）。
 
-    com.android.support:design:23.1.1
-    com.android.support:cardview-v7:23.1.0
+    com.android.support:design:23.+
+    com.android.support:cardview-v7:23.+
 
 ##How to use
 ***
 ###Gradle
-    compile 'com.lzp.floatingactionbutton:floatingactionbuttonplus:0.3.0'
+    compile 'com.lzp.floatingactionbutton:floatingactionbuttonplus:0.3.2'
     
 ###Maven
 
     <dependency>
     <groupId>com.lzp.floatingactionbutton</groupId>
     <artifactId>floatingactionbuttonplus</artifactId>
-    <version>0.3.0</version>
+    <version>0.3.2</version>
     </dependency>
     
 ###The effect of the above（如上图的效果）
