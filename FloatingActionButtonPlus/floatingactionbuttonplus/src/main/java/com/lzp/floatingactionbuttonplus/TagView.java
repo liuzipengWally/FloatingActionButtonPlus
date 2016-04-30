@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 /**
  * Created by liuzipeng on 15/11/26.
- *
  * 这是一个CardView，中间放了一个textView。此View作为FloatingActionButtonPlus的label标签
  */
 public class TagView extends CardView {
@@ -23,17 +22,10 @@ public class TagView extends CardView {
         mTextView.setSingleLine(true);
     }
 
-    public TagView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    public TagView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
     /**
-     * 设置字体尺寸
-     * @param size  字体尺寸
+     * setTextSize 设置字体尺寸
+     *
+     * @param size 字体尺寸
      */
     protected void setTextSize(float size) {
         mTextView.setTextSize(size);
@@ -41,6 +33,7 @@ public class TagView extends CardView {
 
     /**
      * 设置字体颜色
+     *
      * @param color 字体颜色
      */
     protected void setTextColor(int color) {
@@ -49,7 +42,8 @@ public class TagView extends CardView {
 
     /**
      * 设置显示的文字
-     * @param text  显示的文字
+     *
+     * @param text 显示的文字
      */
     protected void setTagText(String text) {
         mTextView.setText(text);
@@ -64,7 +58,7 @@ public class TagView extends CardView {
     }
 
     /**
-     * 将数值转换为DP
+     * 将对应数值的dp转换为px
      *
      * @param value
      * @return

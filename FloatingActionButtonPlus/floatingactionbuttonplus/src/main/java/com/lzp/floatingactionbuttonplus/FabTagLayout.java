@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 /**
  * Created by liuzipeng on 15/11/23.
- * <p>
  * 这个ViewGroup的作用是为了包裹FloatingActionButton为其提供一个label标签，
  * 该label标签是support库中的CardView。
  */
@@ -75,7 +74,8 @@ public class FabTagLayout extends ViewGroup {
 
     /**
      * 设置tag显示的文字
-     * @param text  显示的文字
+     *
+     * @param text 显示的文字
      */
     public void setTagText(String text) {
         mTagView.setTagText(text);
@@ -89,7 +89,7 @@ public class FabTagLayout extends ViewGroup {
      */
     public void setOrientation(int orientation) {
         mOrientation = orientation;
-        postInvalidate();
+        invalidate();
     }
 
     /**
@@ -99,7 +99,7 @@ public class FabTagLayout extends ViewGroup {
      */
     public void setScene(boolean scene) {
         mScene = scene;
-        postInvalidate();
+        invalidate();
     }
 
     @Override
@@ -115,7 +115,7 @@ public class FabTagLayout extends ViewGroup {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int groupWidth = getChildAt(0).getMeasuredWidth() + getChildAt(1).getMeasuredWidth() + convertDp(24 + 8 + 8);
-        int groupHeight = Math.max(getChildAt(0).getMeasuredHeight(), getChildAt(1).getMeasuredHeight()) + convertDp(12 + 8);
+        int groupHeight = Math.max(getChildAt(0).getMeasuredHeight(), getChildAt(1).getMeasuredHeight()) + convertDp(12);
 
         MarginLayoutParams params;
 
@@ -143,26 +143,26 @@ public class FabTagLayout extends ViewGroup {
             case TO_RIGHT:
                 /*FAB*/
                 fl = tagWidth + convertDp(16);
-                ft = convertDp(4);
+//                ft = convertDp(4);
                 fr = fl + fabWidth;
                 fb = ft + fabHeight;
 
                 /*TAG*/
                 tl = convertDp(8);
-                tt = (fabHeight - tagHeight) / 2 + convertDp(4);
+                tt = (fabHeight - tagHeight) / 2;
                 tr = tl + tagWidth;
                 tb = tt + tagHeight;
                 break;
             case TO_LEFT:
                 /*FAB*/
                 fl = convertDp(24);
-                ft = convertDp(4);
+//                ft = convertDp(4);
                 fr = fl + fabWidth;
                 fb = ft + fabHeight;
 
                 /*TAG*/
                 tl = convertDp(32) + fabWidth;
-                tt = (fabHeight - tagHeight) / 2 + convertDp(4);
+                tt = (fabHeight - tagHeight) / 2 ;
                 tr = tl + tagWidth;
                 tb = tt + tagHeight;
                 break;

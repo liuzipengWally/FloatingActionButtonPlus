@@ -14,14 +14,14 @@ this is a Google Inbox style FloatingActionButton and **My English is poor**。�
 ##How to use
 ***
 ###Gradle
-    compile 'com.lzp.floatingactionbutton:floatingactionbuttonplus:0.3.2'
+    compile 'com.lzp.floatingactionbutton:floatingactionbuttonplus:0.4.0'
     
 ###Maven
 
     <dependency>
     <groupId>com.lzp.floatingactionbutton</groupId>
     <artifactId>floatingactionbuttonplus</artifactId>
-    <version>0.3.2</version>
+    <version>0.4.0</version>
     </dependency>
     
 ###The effect of the above（如上图的效果）
@@ -140,8 +140,6 @@ this is a Google Inbox style FloatingActionButton and **My English is poor**。�
 
     </android.support.design.widget.CoordinatorLayout>  
    这样就完成了上图的效果。   
-   最外层的**`com.lzp.floatingactionbuttonplus.FloatingActionButtonPlus`**会带有一个主按钮。**FloatingActionButtonPlus**中包含了多个**FabTagLayout**，而每一个**`com.lzp.floatingactionbuttonplus.FabTagLayout`**则就是一个**item**。**FabTagLayout**带有一个**lable**标签，你需要在**FabTagLayout**再添加一个**FloatingActionButton**。请记住为每个item的**FloatingActionButton**添加上**`app:fabSize="mini"`**，将其设置为mini型。可通过**`app:backgroundTint="color"`**更改这些fab的颜色。
-   ***
 
 ###position
 ![right_bottom](https://raw.githubusercontent.com/550609334/FloatingActionButtonPlus/master/FloatingActionButtonPlus/screenshots/right_bottom.gif)

@@ -22,26 +22,18 @@ import android.view.animation.OvershootInterpolator;
 
 /**
  * Created by liuzipeng on 15/11/27.
- * <p>
  * FloatingActionButtonPlus是一个基于Google官方support library中的FloatingActionButton与CardView的一个
  * 二次封装，目的为实现类似Google Inbox中带有多个子Fab的效果。由于是使用了官方的FloatingActionButton，因为阴影绘制
  * 方式的不同，在5.0一下系统和5.0以上系统的显示效果有一定差别。后续会做改进。
  * Api版本最低兼容到Api14（minSdkVersion 14）
- * <p>
  * 提供了四个position，分别为POS_LEFT_TOP，POS_LEFT_BOTTOM，POS_RIGHT_TOP，POS_RIGHT_BOTTOM。可在xml中使用
  * {@code position}去设置。也可在java代码中通过setPosition方法去设置{@link #setPosition(int)}
- * <p>
  * 本次添加了3种Animation，可直接在XML中使用{@code animationMode}去设置，也可在java代码中使用
  * setAnimation方法设置{@link #setAnimation(int)}
  * 分别为ANIM_FADE，ANIM_SCALE，ANIM_BOUNCE。后续会添加更多。
- * <p>
  * 动画的duration可在xml中通过{@code animationDuration}去设置，也可在java代码中通过{@link #setAnimationDuration(int)}去设置
- * <p>
- * 由于还不太懂CoordinatorLayout的工作原理，暂时无法通过Scroll来显示隐藏fab。
- * 所以抛了两个公有方法出去，以供show or hide。{@link #showFab()} {@link #hideFab()}
- * <p>
  * 主Fab的Icon可在Xml中通过{@code switchFabIcon}来设置,java代码中通过{@link #setContentIcon(Drawable)}设置
- * 住Fab的颜色可在XML中通过{@code switchFabColor}来设置，java代码中通过{@link #setSwitchFabColor(ColorStateList)}设置
+ * 主Fab的颜色可在XML中通过{@code switchFabColor}来设置，java代码中通过{@link #setSwitchFabColor(ColorStateList)}设置
  */
 public class FloatingActionButtonPlus extends ViewGroup {
     public static final int POS_LEFT_TOP = 0;
@@ -67,6 +59,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
 
     private boolean mStatus;
     private boolean mSwitchFabStatus = true;
+    private boolean mFirstEnter = true;
 
     private OnItemClickListener mOnItemClickListener;
     private OnSwitchFabClickListener mOnSwitchFabClickListener;
@@ -129,7 +122,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
         backView.setAlpha(0);
         addView(backView);
 
-        mSwitchFab= new FloatingActionButton(context);
+        mSwitchFab = new FloatingActionButton(context);
         mSwitchFab.setBackgroundTintList(mFabColor);
         mSwitchFab.setImageDrawable(mIcon);
         addView(mSwitchFab);
@@ -152,10 +145,16 @@ public class FloatingActionButtonPlus extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        MarginLayoutParams layoutParams = (MarginLayoutParams) getLayoutParams();
-        layoutParams.width = getMeasuredWidth();
-        layoutParams.height = getMeasuredHeight() - 1;
-        setLayoutParams(layoutParams);
+        if (mFirstEnter) {
+            MarginLayoutParams layoutParams = (MarginLayoutParams) getLayoutParams();
+            layoutParams.width = getMeasuredWidth();
+            layoutParams.height = getMeasuredHeight() - 1;
+            setLayoutParams(layoutParams);
+
+            mFirstEnter = false;
+        }
+
+        Log.d("FloatingActionButtonPlu", getMeasuredWidth() + " " + getMeasuredHeight());
 
         if (changed) {
             layoutSwitchFab();
@@ -173,14 +172,14 @@ public class FloatingActionButtonPlus extends ViewGroup {
                 int mFabHeight;
                 int supportMargin;
                 if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-                    mFabHeight = mSwitchFab.getMeasuredHeight() + convertDp(20);
+                    mFabHeight = mSwitchFab.getMeasuredHeight() + dp2px(20);
                     supportMargin = 0;
                 } else {
                     mFabHeight = mSwitchFab.getMeasuredHeight();
-                    supportMargin = convertDp(8);
+                    supportMargin = dp2px(8);
                 }
 
-                int fl = 0 + supportMargin, ft = 0, fr = childWidth, fb = childHeight;
+                int fl = 0 + supportMargin, ft = 0;
 
                 switch (mPosition) {
                     case POS_LEFT_BOTTOM:
@@ -262,8 +261,8 @@ public class FloatingActionButtonPlus extends ViewGroup {
         int t;
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-            l = convertDp(16);
-            t = convertDp(16);
+            l = dp2px(16);
+            t = dp2px(16);
         } else {
             l = 0;
             t = 0;
@@ -525,7 +524,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
      * @param value
      * @return
      */
-    private int convertDp(int value) {
+    private int dp2px(int value) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value, getResources().getDisplayMetrics());
     }
 }

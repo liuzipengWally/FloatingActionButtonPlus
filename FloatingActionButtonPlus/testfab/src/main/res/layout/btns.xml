@@ -1,12 +1,12 @@
-<com.lzp.floatingactionbuttonplus.FloatingActionButtonPlus
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lzp.floatingactionbuttonplus.FloatingActionButtonPlus xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/FabPlus"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="com.lzp.floatingactionbuttonplus.FabBehavior"
     app:switchFabColor="#DB4537"
-    app:switchFabIcon="@mipmap/ic_add_white_48dp"
-    app:layout_behavior="com.lzp.floatingactionbuttonplus.FabBehavior">
+    app:mBackgroundColor="#87000000"
+    app:switchFabIcon="@mipmap/ic_add_white_48dp">
 
     <com.lzp.floatingactionbuttonplus.FabTagLayout
         android:layout_width="wrap_content"
