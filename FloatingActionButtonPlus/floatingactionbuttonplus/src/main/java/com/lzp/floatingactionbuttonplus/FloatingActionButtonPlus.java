@@ -44,6 +44,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
     public static final int ANIM_FADE = 0;
     public static final int ANIM_SCALE = 1;
     public static final int ANIM_BOUNCE = 2;
+    public static final int ANIM_ZHIHU = 3;
 
     private float mSwitchFabRotateVal = 45F;
     private int mAnimationDuration;
@@ -53,6 +54,9 @@ public class FloatingActionButtonPlus extends ViewGroup {
     private int mBackgroundColor;
     private ColorStateList mFabColor;
     private Drawable mIcon;
+
+    private int mWidth;
+    private int mHeight;
 
     private FloatingActionButton mSwitchFab;
     private View mBackView;
@@ -163,6 +167,8 @@ public class FloatingActionButtonPlus extends ViewGroup {
             int childCount = getChildCount();
             for (int i = 0, j = childCount - 2; i < j; i++) {
                 FabTagLayout childView = (FabTagLayout) getChildAt(i + 2);
+                mWidth = childView.getLayoutParams().width;
+                mHeight = childView.getLayoutParams().height;
                 childView.setScene(true);
                 childView.setVisibility(INVISIBLE);
 
@@ -214,7 +220,6 @@ public class FloatingActionButtonPlus extends ViewGroup {
      * @param i
      */
     private void prepareAnim(FabTagLayout childView, int i) {
-        childView.setAlpha(0f);
         switch (mAnimation) {
             case ANIM_BOUNCE:
                 childView.setTranslationY(50);
@@ -327,6 +332,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
                 break;
         }
     }
+
 
     private void scale() {
         for (int i = 2; i < getChildCount(); i++) {
@@ -451,6 +457,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
      * FloatingActionButtonPlus.ANIM_BOUNCE
      * FloatingActionButtonPlus.ANIM_FADE
      * FloatingActionButtonPlus.ANIM_SCALE
+     * FloatingActionButtonPlus.ANIM_ZHIHU
      *
      * @param animationMode 动画模式
      */

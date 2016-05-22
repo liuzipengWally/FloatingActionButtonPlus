@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="com.lzp.floatingactionbuttonplus.FabBehavior"
-    app:switchFabColor="#DB4537"
     app:mBackgroundColor="#87000000"
+    app:switchFabColor="#DB4537"
     app:switchFabIcon="@mipmap/ic_add_white_48dp">
 
     <com.lzp.floatingactionbuttonplus.FabTagLayout

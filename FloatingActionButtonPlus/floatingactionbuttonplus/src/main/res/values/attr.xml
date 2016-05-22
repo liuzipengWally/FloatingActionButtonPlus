@@ -11,6 +11,7 @@
         <enum name="Scale" value="1"></enum>
         <enum name="bounce" value="2"></enum>
     </attr>
+
     <attr name="position">
         <enum name="left_top" value="0"></enum>
         <enum name="left_bottom" value="1"></enum>

@@ -14,14 +14,14 @@ this is a Google Inbox style FloatingActionButton and **My English is poor**。�
 ##How to use
 ***
 ###Gradle
-    compile 'com.lzp.floatingactionbutton:floatingactionbuttonplus:0.4.0'
+    compile 'com.lzp.floatingactionbutton:floatingactionbuttonplus:1.0.0'
     
 ###Maven
 
     <dependency>
     <groupId>com.lzp.floatingactionbutton</groupId>
     <artifactId>floatingactionbuttonplus</artifactId>
-    <version>0.4.0</version>
+    <version>1.0.0</version>
     </dependency>
     
 ###The effect of the above（如上图的效果）
