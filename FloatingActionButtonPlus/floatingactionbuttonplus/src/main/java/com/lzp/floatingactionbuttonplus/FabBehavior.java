@@ -21,6 +21,7 @@ public class FabBehavior extends CoordinatorLayout.Behavior<View> {
     public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, View child, View directTargetChild, View target, int nestedScrollAxes) {
         return (nestedScrollAxes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0;
     }
+	 private static final boolean SNACKBAR_BEHAVIOR_ENABLED = Build.VERSION.SDK_INT >= 11;
 
     //根据滑动距离，显示隐藏。
     @Override
@@ -35,4 +36,18 @@ public class FabBehavior extends CoordinatorLayout.Behavior<View> {
             mActionButtonPlus.showFab();
         }
     }
+	
+	 @Override
+        public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
+            // We're dependent on all SnackbarLayouts (if enabled)
+            return SNACKBAR_BEHAVIOR_ENABLED && dependency instanceof Snackbar.SnackbarLayout;
+        }
+
+        @Override
+        public boolean onDependentViewChanged(CoordinatorLayout parent, View child, View dependency) {
+            float translationY = Math.min(0, dependency.getTranslationY() - dependency.getHeight());
+            child.setTranslationY(translationY);
+            return true;
+        }
 }
+
